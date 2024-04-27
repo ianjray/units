@@ -1,0 +1,48 @@
+.POSIX:
+.SUFFIXES:
+.SUFFIXES: .c .o .coverage
+
+BINDIR     = @BINDIR@
+CC         = @CC@
+CCOV       = gcov
+CFLAGS     = @CFLAGS@
+CFLAGS_COV = @CFLAGS_COV@
+CFLAGS_SAN = @CFLAGS_SAN@
+
+.PHONY: all
+all: unit.coverage parse.coverage units
+
+unit.coverage: test_unit.c
+parse.coverage: test_parse.c unit.c
+
+unit.c: unit.head.c unit.body.c
+	( cat unit.head.c ; cc -E unit.body.c |grep -ve "^#" ) > $@
+
+.c.o:
+	$(CC) $(CFLAGS) -c $^ -o $@
+
+.c.coverage:
+	$(CC) $(CFLAGS) $(CFLAGS_COV) $(CFLAGS_SAN) $^ -o $@ -lm
+	./$@
+	$(CCOV) $<
+	! grep "#####" $<.gcov
+
+units: units.o unit.o parse.o
+	$(CC) $(CFLAGS) $^ -o $@ -lm
+
+.PHONY: install
+install: units
+	mkdir -p $(BINDIR)
+	install -m 755 units $(BINDIR)/units
+
+.PHONY: uninstall
+uninstall:
+	rm -f ${BINDIR}/units
+
+.PHONY: clean
+clean:
+	rm -rf unit.c *.o *.gc?? *.coverage units
+
+.PHONY: distclean
+distclean: clean
+	rm -f Makefile config.status
