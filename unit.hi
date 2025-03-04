@@ -1,6 +1,7 @@
 #ifndef b
 /// Base unit.
 /// @see https://en.wikipedia.org/wiki/International_System_of_Units
+/// @see https://en.wikipedia.org/wiki/SI_derived_unit
 #define b(symbol, name)
 #endif
 #ifndef u
@@ -17,6 +18,7 @@ b(L"m",     BaseUnitMetre)
 b(L"kg",    BaseUnitKilogram)
 b(L"K",     BaseUnitKelvin)
 b(L"Pa",    DerivedUnitPressurePascal)
+b(L"rad",   DerivedUnitAngleRadian)
 
 
 u(L"mm",    PresentationUnitMillimetre,         BaseUnitMetre,              0.001)
@@ -50,6 +52,10 @@ u(L"kPa",   PresentationUnitKiloPascal,         DerivedUnitPressurePascal,  1000
 
 u(L"mmHg",  PresentationUnitMillimetreMercury,  DerivedUnitPressurePascal,  133.322387415)
 u(L"inHg",  PresentationUnitInchesMercury,      DerivedUnitPressurePascal,  3386.3886666667)
+
+
+u(L"rad",   PresentationUnitRadian,             DerivedUnitAngleRadian,     1)
+u(L"°",     PresentationUnitDegree,             DerivedUnitAngleRadian,     M_PI / 180)
 
 
 #undef b
