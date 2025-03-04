@@ -129,6 +129,9 @@ static struct lookup labels[] = {
     { L"\" Hg", PresentationUnitInchesMercury },
     { L"inch of mercury", PresentationUnitInchesMercury },
     { L"inches of mercury", PresentationUnitInchesMercury },
+
+    { L"rad", PresentationUnitRadian },
+    { L"°", PresentationUnitDegree },
 };
 
 /// @return True if end of word.

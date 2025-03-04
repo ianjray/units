@@ -13,11 +13,12 @@ Unknown input unit 'foo'.
 Unknown input unit 'foo kg'.
 Unknown output unit 'foo'.
 
-$ units "16 km miles" "20 kilograms lb" "373 K 'C" "101325 Pa mmHg"
+$ units "16 km miles" "20 kilograms lb" "373 K 'C" "101325 Pa mmHg" "42 ° rad"
 16 km is 9.94194 mi
 20 kg is 44.0925 lb
 373 K is 99.85 °C
 101325 Pa is 760 mmHg
+42 ° is 0.733038 rad
 ```
 
 # Code Generation Notes
