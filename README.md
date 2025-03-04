@@ -18,6 +18,9 @@ $ units "16 km miles" "20 kilograms lb" "373 K 'C" "101325 Pa mmHg"
 20 kg is 44.0925 lb
 373 K is 99.85 °C
 101325 Pa is 760 mmHg
+
+$ units "42 ° rad"
+42 ° is 0.733038 rad
 ```
 
 # Code Generation Notes
