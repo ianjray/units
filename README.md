@@ -21,6 +21,11 @@ $ units "16 km miles" "20 kilograms lb" "373 K 'C" "101325 Pa mmHg"
 
 $ units "42 ° rad"
 42 ° is 0.733038 rad
+
+$ units "180 lbs kg" "1 t tn" "1 t imperial ton"
+180 lb is 81.6466 kg
+1 t is 1.10231 tn
+1 t is 0.984206 long ton
 ```
 
 # Code Generation Notes

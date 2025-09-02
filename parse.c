@@ -79,6 +79,10 @@ static struct lookup labels[] = {
     { L"milligram", PresentationUnitMilligram },
     { L"milligrams", PresentationUnitMilligram },
 
+    { L"Mg", PresentationUnitMegagram },
+    { L"megagram", PresentationUnitMegagram },
+    { L"megagrams", PresentationUnitMegagram },
+
     // Not SI, but commonly used.
     { L"lb", PresentationUnitPound },
     { L"lbs", PresentationUnitPound },
@@ -89,6 +93,20 @@ static struct lookup labels[] = {
     { L"oz", PresentationUnitOunce },
     { L"ounce", PresentationUnitOunce },
     { L"ounces", PresentationUnitOunce },
+
+    // Not SI, but commonly used.
+    { L"t", PresentationUnitTonne },
+    { L"tonne", PresentationUnitTonne },
+    { L"tonnes", PresentationUnitTonne },
+    { L"tn", PresentationUnitShortTon },
+    { L"short ton", PresentationUnitShortTon },
+    { L"short tons", PresentationUnitShortTon },
+    { L"US ton", PresentationUnitShortTon },
+    { L"US tons", PresentationUnitShortTon },
+    { L"long ton", PresentationUnitLongTon },
+    { L"long tons", PresentationUnitLongTon },
+    { L"imperial ton", PresentationUnitLongTon },
+    { L"imperial tons", PresentationUnitLongTon },
 
     { L"K", PresentationUnitKelvin },
     // Less common.

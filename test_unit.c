@@ -54,8 +54,14 @@ int main(void)
     test_unit_to_base_unit(2000000, PresentationUnitMilligram, 2, BaseUnitKilogram);
     test_unit_to_base_unit(2000, PresentationUnitGram, 2, BaseUnitKilogram);
     test_unit_to_base_unit(2, PresentationUnitKilogram, 2, BaseUnitKilogram);
+    test_unit_to_base_unit(2, PresentationUnitMegagram, 2000, BaseUnitKilogram);
+    test_unit_to_base_unit(2, PresentationUnitTonne, 2000, BaseUnitKilogram);
     test_unit_to_base_unit(4.409245, PresentationUnitPound, 2, BaseUnitKilogram);
     test_unit_to_base_unit(70.547931, PresentationUnitOunce, 2, BaseUnitKilogram);
+    test_unit_to_base_unit(2000, PresentationUnitPound, 907.18474, BaseUnitKilogram);
+    test_unit_to_base_unit(2240, PresentationUnitPound, 1016.046909, BaseUnitKilogram);
+    test_unit_to_base_unit(1, PresentationUnitShortTon, 907.1847, BaseUnitKilogram);
+    test_unit_to_base_unit(1, PresentationUnitLongTon, 1016.047, BaseUnitKilogram);
 
     test_unit_to_base_unit(300, PresentationUnitKelvin, 300, BaseUnitKelvin);
     test_unit_to_base_unit(26.85, PresentationUnitDegreesCelsius, 300, BaseUnitKelvin);
@@ -86,8 +92,12 @@ int main(void)
     assert(!wcscmp(symbol_of_unit(PresentationUnitMilligram), L"mg"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitGram), L"g"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitKilogram), L"kg"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitMegagram), L"Mg"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitPound), L"lb"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitOunce), L"oz"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitTonne), L"t"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitShortTon), L"tn"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitLongTon), L"long ton"));
 
     assert(!wcscmp(symbol_of_unit(PresentationUnitKelvin), L"K"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitDegreesCelsius), L"°C"));
@@ -131,8 +141,12 @@ int main(void)
     assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitMilligram));
     assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitGram));
     assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitKilogram));
+    assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitMegagram));
     assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitPound));
     assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitOunce));
+    assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitTonne));
+    assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitShortTon));
+    assert(can_render_base_unit_as(BaseUnitKilogram, PresentationUnitLongTon));
 
     assert(!can_render_base_unit_as(BaseUnitKelvin, PresentationUnitPascal));
 
@@ -173,6 +187,10 @@ int main(void)
     expect(base_unit_render_as(2, BaseUnitKilogram, PresentationUnitKilogram),      "2 kg");
     expect(base_unit_render_as(2, BaseUnitKilogram, PresentationUnitPound),         "4.40925 lb");
     expect(base_unit_render_as(2, BaseUnitKilogram, PresentationUnitOunce),        "70.5479 oz");
+    expect(base_unit_render_as(2, BaseUnitKilogram, PresentationUnitMegagram),      "0.002 Mg");
+    expect(base_unit_render_as(2, BaseUnitKilogram, PresentationUnitTonne),         "0.002 t");
+    expect(base_unit_render_as(2000, BaseUnitKilogram, PresentationUnitShortTon),   "2.20462 tn");
+    expect(base_unit_render_as(2000, BaseUnitKilogram, PresentationUnitLongTon),    "1.96841 long ton");
 
     expect(base_unit_render_as(300, BaseUnitKelvin, PresentationUnitKelvin),            "300 K");
     expect(base_unit_render_as(300, BaseUnitKelvin, PresentationUnitDegreesCelsius),     "26.85 °C");

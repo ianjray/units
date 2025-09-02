@@ -36,9 +36,14 @@ u(L"in",    PresentationUnitInch,               BaseUnitMetre,              0.02
 u(L"mg",    PresentationUnitMilligram,          BaseUnitKilogram,           0.000001)
 u(L"g",     PresentationUnitGram,               BaseUnitKilogram,           0.001)
 u(L"kg",    PresentationUnitKilogram,           BaseUnitKilogram,           1)
+u(L"Mg",    PresentationUnitMegagram,           BaseUnitKilogram,           1000)
+u(L"t",     PresentationUnitTonne,              BaseUnitKilogram,           1000)
 
 u(L"lb",    PresentationUnitPound,              BaseUnitKilogram,           0.45359237)
 u(L"oz",    PresentationUnitOunce,              BaseUnitKilogram,           0.02834952)
+
+u(L"tn",       PresentationUnitShortTon,        BaseUnitKilogram,           907.1847)
+u(L"long ton", PresentationUnitLongTon,         BaseUnitKilogram,           1016.047)
 
 
 u(L"K",     PresentationUnitKelvin,             BaseUnitKelvin,             1)

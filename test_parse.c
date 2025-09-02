@@ -57,6 +57,12 @@ int main(void)
     test_parse(L"      4.409245lb", 2, BaseUnitKilogram);
     test_parse(L"     70.547931oz", 2, BaseUnitKilogram);
 
+    test_parse(L"      1 t",            1000.0000, BaseUnitKilogram);
+    test_parse(L"      1 tn",            907.1847, BaseUnitKilogram);
+    test_parse(L"      1 US ton",        907.1847, BaseUnitKilogram);
+    test_parse(L"      1 long ton",     1016.0470, BaseUnitKilogram);
+    test_parse(L"      1 imperial ton", 1016.0470, BaseUnitKilogram);
+
     test_parse(L"300K",     300, BaseUnitKelvin);
     test_parse(L" 26.85°C", 300, BaseUnitKelvin);
     test_parse(L" 80.33°F", 300, BaseUnitKelvin);
