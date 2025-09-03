@@ -26,6 +26,9 @@ $ units "180 lbs kg" "1 t tn" "1 t imperial ton"
 180 lb is 81.6466 kg
 1 t is 1.10231 tn
 1 t is 0.984206 long ton
+
+$ units "80 psi bar"
+80 psi is 5.51581 bar
 ```
 
 # Code Generation Notes

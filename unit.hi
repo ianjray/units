@@ -54,6 +54,9 @@ c(L"°F",    PresentationUnitDegreesFahrenheit,  BaseUnitKelvin,             ((X
 u(L"Pa",    PresentationUnitPascal,             DerivedUnitPressurePascal,  1)
 u(L"hPa",   PresentationUnitHectoPascal,        DerivedUnitPressurePascal,  100)
 u(L"kPa",   PresentationUnitKiloPascal,         DerivedUnitPressurePascal,  1000)
+u(L"bar",   PresentationUnitBar,                DerivedUnitPressurePascal,  100000)
+u(L"mbar",  PresentationUnitMillibar,           DerivedUnitPressurePascal,  100)
+u(L"psi",   PresentationUnitPoundPerSquareInch, DerivedUnitPressurePascal,  6894.757293168)
 
 u(L"mmHg",  PresentationUnitMillimetreMercury,  DerivedUnitPressurePascal,  133.322387415)
 u(L"inHg",  PresentationUnitInchesMercury,      DerivedUnitPressurePascal,  3386.3886666667)

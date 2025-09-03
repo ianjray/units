@@ -148,6 +148,13 @@ static struct lookup labels[] = {
     { L"inch of mercury", PresentationUnitInchesMercury },
     { L"inches of mercury", PresentationUnitInchesMercury },
 
+    // Not SI, but used especially in meterology.
+    { L"bar", PresentationUnitBar },
+    { L"mbar", PresentationUnitMillibar },
+
+    // Not SI, but commonly used.
+    { L"psi", PresentationUnitPoundPerSquareInch },
+
     { L"rad", PresentationUnitRadian },
     { L"°", PresentationUnitDegree },
 };

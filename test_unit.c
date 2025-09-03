@@ -19,6 +19,9 @@ static void test_unit_to_base_unit(double quantity, enum unit unit, double expec
     enum base base_unit;
     double v = unit_to_base_unit(quantity, unit, &base_unit);
     assert(base_unit == expected_base_unit);
+    if (!fcmp(v, expected_quantity)) {
+        printf("FAIL: %f, %f\n", v, expected_quantity);
+    }
     assert(fcmp(v, expected_quantity));
 }
 
@@ -72,6 +75,9 @@ int main(void)
     test_unit_to_base_unit(1, PresentationUnitKiloPascal, 1000, DerivedUnitPressurePascal);
     test_unit_to_base_unit(7.5006157585, PresentationUnitMillimetreMercury, 1000, DerivedUnitPressurePascal);
     test_unit_to_base_unit(0.2952998307, PresentationUnitInchesMercury, 1000, DerivedUnitPressurePascal);
+    test_unit_to_base_unit(1, PresentationUnitBar, 100000, DerivedUnitPressurePascal);
+    test_unit_to_base_unit(1, PresentationUnitMillibar, 100, DerivedUnitPressurePascal);
+    test_unit_to_base_unit(1, PresentationUnitPoundPerSquareInch, 6894.757293, DerivedUnitPressurePascal);
 
     test_unit_to_base_unit(M_PI, PresentationUnitRadian, M_PI, DerivedUnitAngleRadian);
     test_unit_to_base_unit(180, PresentationUnitDegree, M_PI, DerivedUnitAngleRadian);
@@ -108,6 +114,9 @@ int main(void)
     assert(!wcscmp(symbol_of_unit(PresentationUnitKiloPascal), L"kPa"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitMillimetreMercury), L"mmHg"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitInchesMercury), L"inHg"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitBar), L"bar"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitMillibar), L"mbar"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitPoundPerSquareInch), L"psi"));
 
     assert(!wcscmp(symbol_of_unit(PresentationUnitRadian), L"rad"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitDegree), L"°"));
@@ -161,6 +170,9 @@ int main(void)
     assert(can_render_base_unit_as(DerivedUnitPressurePascal, PresentationUnitKiloPascal));
     assert(can_render_base_unit_as(DerivedUnitPressurePascal, PresentationUnitMillimetreMercury));
     assert(can_render_base_unit_as(DerivedUnitPressurePascal, PresentationUnitInchesMercury));
+    assert(can_render_base_unit_as(DerivedUnitPressurePascal, PresentationUnitBar));
+    assert(can_render_base_unit_as(DerivedUnitPressurePascal, PresentationUnitMillibar));
+    assert(can_render_base_unit_as(DerivedUnitPressurePascal, PresentationUnitPoundPerSquareInch));
 
     assert(!can_render_base_unit_as(DerivedUnitAngleRadian, PresentationUnitMetre));
 
@@ -201,6 +213,9 @@ int main(void)
     expect(base_unit_render_as(1000, DerivedUnitPressurePascal, PresentationUnitKiloPascal),           "1 kPa");
     expect(base_unit_render_as(1000, DerivedUnitPressurePascal, PresentationUnitMillimetreMercury),    "7.50062 mmHg");
     expect(base_unit_render_as(1000, DerivedUnitPressurePascal, PresentationUnitInchesMercury),        "0.2953 inHg");
+    expect(base_unit_render_as(100000, DerivedUnitPressurePascal, PresentationUnitBar),                "1 bar");
+    expect(base_unit_render_as(100000, DerivedUnitPressurePascal, PresentationUnitMillibar),        "1000 mbar");
+    expect(base_unit_render_as(6894.757, DerivedUnitPressurePascal, PresentationUnitPoundPerSquareInch), "1 psi");
 
     expect(base_unit_render_as(3.1415926536, DerivedUnitAngleRadian, PresentationUnitRadian), "3.14159 rad");
     expect(base_unit_render_as(3.1415926536, DerivedUnitAngleRadian, PresentationUnitDegree), "180 °");
