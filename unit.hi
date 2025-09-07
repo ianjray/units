@@ -15,6 +15,7 @@
 
 
 b(L"m",     BaseUnitMetre)
+b(L"m^3",   BaseUnitCubicMetre)
 b(L"kg",    BaseUnitKilogram)
 b(L"K",     BaseUnitKelvin)
 b(L"Pa",    DerivedUnitPressurePascal)
@@ -31,6 +32,21 @@ u(L"yd",    PresentationUnitYard,               BaseUnitMetre,              0.91
 u(L"ft",    PresentationUnitFeet,               BaseUnitMetre,              0.3048)
 u(L"'\"",   PresentationUnitFeetAndInches,      BaseUnitMetre,              0.3048)
 u(L"in",    PresentationUnitInch,               BaseUnitMetre,              0.0254)
+
+
+u(L"m^3",   PresentationUnitCubicMetre,         BaseUnitCubicMetre,         1)
+u(L"L",     PresentationUnitLitre,              BaseUnitCubicMetre,         0.001)
+u(L"dL",    PresentationUnitDecilitre,          BaseUnitCubicMetre,         0.0001)
+u(L"cL",    PresentationUnitCentilitre,         BaseUnitCubicMetre,         0.00001)
+u(L"mL",    PresentationUnitMillilitre,         BaseUnitCubicMetre,         0.000001)
+u(L"l",     PresentationUnitLitreAlt,           BaseUnitCubicMetre,         0.001)
+u(L"dl",    PresentationUnitDecilitreAlt,       BaseUnitCubicMetre,         0.0001)
+u(L"cl",    PresentationUnitCentilitreAlt,      BaseUnitCubicMetre,         0.00001)
+u(L"ml",    PresentationUnitMillilitreAlt,      BaseUnitCubicMetre,         0.000001)
+u(L"pt",    PresentationUnitPint,               BaseUnitCubicMetre,         0.00056826125)
+u(L"US pt", PresentationUnitPintUS,             BaseUnitCubicMetre,         0.000473176473)
+u(L"ft^3",  PresentationUnitCubicFoot,          BaseUnitCubicMetre,         0.028316846592)
+u(L"in^3",  PresentationUnitCubicInch,          BaseUnitCubicMetre,         1.6387064069264E-5)
 
 
 u(L"mg",    PresentationUnitMilligram,          BaseUnitKilogram,           0.000001)

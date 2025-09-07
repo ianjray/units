@@ -10,7 +10,7 @@
 /// Fuzzy compare.
 static bool fcmp(double x, double y)
 {
-    return fabs(x - y) < 0.000001;
+    return fabs(x - y) < 0.00001;
 }
 
 /// Test that @c unit_to_base_unit produces expected output.
@@ -32,6 +32,9 @@ static void expect(char *actual, const char *expected)
         assert(!actual);
     } else {
         assert(actual && expected);
+        if (strcmp(actual, expected)) {
+            printf("%s, %s\n", actual, expected);
+        }
         assert(!strcmp(actual, expected));
         free(actual);
     }
@@ -53,6 +56,20 @@ int main(void)
     test_unit_to_base_unit(3.280839, PresentationUnitFeetAndInches, 1, BaseUnitMetre);
     test_unit_to_base_unit(39.370078, PresentationUnitInch, 1, BaseUnitMetre);
     test_unit_to_base_unit(0.621371192, PresentationUnitMile, 1000, BaseUnitMetre);
+
+    test_unit_to_base_unit(1, PresentationUnitCubicMetre, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(1000, PresentationUnitLitre, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(10000, PresentationUnitDecilitre, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(100000, PresentationUnitCentilitre, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(1000000, PresentationUnitMillilitre, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(1000, PresentationUnitLitreAlt, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(10000, PresentationUnitDecilitreAlt, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(100000, PresentationUnitCentilitreAlt, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(1000000, PresentationUnitMillilitreAlt, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(1000, PresentationUnitPint, 0.56826125, BaseUnitCubicMetre);
+    test_unit_to_base_unit(1000, PresentationUnitPintUS, 0.473176473, BaseUnitCubicMetre);
+    test_unit_to_base_unit(35.3147, PresentationUnitCubicFoot, 1, BaseUnitCubicMetre);
+    test_unit_to_base_unit(61023.7, PresentationUnitCubicInch, 1, BaseUnitCubicMetre);
 
     test_unit_to_base_unit(2000000, PresentationUnitMilligram, 2, BaseUnitKilogram);
     test_unit_to_base_unit(2000, PresentationUnitGram, 2, BaseUnitKilogram);
@@ -95,6 +112,20 @@ int main(void)
     assert(!wcscmp(symbol_of_unit(PresentationUnitFeetAndInches), L"'\""));
     assert(!wcscmp(symbol_of_unit(PresentationUnitInch), L"in"));
 
+    assert(!wcscmp(symbol_of_unit(PresentationUnitCubicMetre), L"m^3"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitLitre), L"L"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitDecilitre), L"dL"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitCentilitre), L"cL"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitMillilitre), L"mL"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitLitreAlt), L"l"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitDecilitreAlt), L"dl"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitCentilitreAlt), L"cl"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitMillilitreAlt), L"ml"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitPint), L"pt"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitPintUS), L"US pt"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitCubicFoot), L"ft^3"));
+    assert(!wcscmp(symbol_of_unit(PresentationUnitCubicInch), L"in^3"));
+
     assert(!wcscmp(symbol_of_unit(PresentationUnitMilligram), L"mg"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitGram), L"g"));
     assert(!wcscmp(symbol_of_unit(PresentationUnitKilogram), L"kg"));
@@ -124,6 +155,7 @@ int main(void)
 
     expect(base_unit_render(42, BaseUnitNone),              NULL);
     expect(base_unit_render(42, BaseUnitMetre),             "42 m");
+    expect(base_unit_render(42, BaseUnitCubicMetre),        "42 m^3");
     expect(base_unit_render(42, BaseUnitKilogram),          "42 kg");
     expect(base_unit_render(42, BaseUnitKelvin),            "42 K");
     expect(base_unit_render(42, DerivedUnitPressurePascal), "42 Pa");
@@ -144,6 +176,20 @@ int main(void)
     assert(can_render_base_unit_as(BaseUnitMetre, PresentationUnitFeet));
     assert(can_render_base_unit_as(BaseUnitMetre, PresentationUnitInch));
     assert(can_render_base_unit_as(BaseUnitMetre, PresentationUnitMile));
+
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitCubicMetre));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitLitre));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitDecilitre));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitCentilitre));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitMillilitre));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitLitreAlt));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitDecilitreAlt));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitCentilitreAlt));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitMillilitreAlt));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitPint));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitPintUS));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitCubicFoot));
+    assert(can_render_base_unit_as(BaseUnitCubicMetre, PresentationUnitCubicInch));
 
     assert(!can_render_base_unit_as(BaseUnitKilogram, PresentationUnitMillimetre));
 
@@ -193,6 +239,20 @@ int main(void)
 
     expect(base_unit_render_as(1000, BaseUnitMetre, PresentationUnitMile),          "0.621371 mi");
     expect(base_unit_render_as(1000, BaseUnitMetre, PresentationUnitKilometre),     "1 km");
+
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitCubicMetre),  "1 m^3");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitLitre),         "1000 L");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitDecilitre),    "10000 dL");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitCentilitre),  "100000 cL");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitMillilitre), "1e+06 mL");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitLitreAlt),         "1000 l");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitDecilitreAlt),    "10000 dl");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitCentilitreAlt),  "100000 cl");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitMillilitreAlt), "1e+06 ml");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitPint),       "1759.75 pt");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitPintUS),     "2113.38 US pt");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitCubicFoot),    "35.3147 ft^3");
+    expect(base_unit_render_as(1, BaseUnitCubicMetre, PresentationUnitCubicInch), "61023.7 in^3");
 
     expect(base_unit_render_as(2, BaseUnitKilogram, PresentationUnitMilligram), "2e+06 mg");
     expect(base_unit_render_as(2, BaseUnitKilogram, PresentationUnitGram),       "2000 g");

@@ -29,6 +29,13 @@ $ units "180 lbs kg" "1 t tn" "1 t imperial ton"
 
 $ units "80 psi bar"
 80 psi is 5.51581 bar
+
+$ units "1 m^3 l" "2 m^3 L" "0.1 m^3 ml" "1 in^3 ml" "1 ft^3 in^3"
+1 m^3 is 1000 l
+2 m^3 is 2000 L
+0.1 m^3 is 100000 ml
+1 in^3 is 16.3871 ml
+1 ft^3 is 1728 in^3
 ```
 
 # Code Generation Notes
